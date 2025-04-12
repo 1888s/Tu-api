@@ -37,14 +37,13 @@
     <div id="errorMessage" class="error-message" style="display:none;">无法加载图片</div>
 
     <script>
-        // 获取/images目录下的所有图片文件
-        const imageFormats = ['.webp', '.jpg', '.png'];
-        const imagePath = 'https://raw.githubusercontent.com/1888s/Tu-api/refs/heads/main/images/';
+        // GitHub raw URL 基础路径
+        const imageBaseUrl = 'https://raw.githubusercontent.com/1888s/Tu-api/refs/heads/main/images/';
 
-        // 获取目录下所有图片文件
+        // 获取目录下所有图片文件名
         const images = [
             'image1.webp', 'image2.jpg', 'image3.png', 'image4.webp', 'image5.jpg'
-            // 你可以手动列出你 images 目录下的图片文件名
+            // 你可以手动列出你仓库中 images 目录下的图片文件名
         ];
 
         // 随机选择一张图片
@@ -55,7 +54,7 @@
 
         // 设置图片源
         function loadImage() {
-            const imageSrc = imagePath + getRandomImage();
+            const imageSrc = imageBaseUrl + getRandomImage();
             const imgElement = document.getElementById('randomImage');
             imgElement.src = imageSrc;
         }
