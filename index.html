@@ -1,39 +1,48 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>随机图片展示</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
 </head>
 <body>
-    <h1>随机图片展示</h1>
-    <img id="randomImage" src="" alt="Random Image" style="max-width: 100%; height: auto;">
-    
-    <script>
-        // 随机获取图片
-        function getRandomImage() {
-            const imageFolder = '/images';
-            const imageExtensions = ['.webp', '.jpg', '.png'];
-            
-            // 使用手动列出的图片名称（省略了前缀）
-            const imageNames = [
-                '66505ff0d2887',
-                '66505ff1b6249',
-                'anotherImage1',  // 你可以继续添加其它文件名
-                'anotherImage2'
-            ];
 
-            // 随机选择一个图片名称
-            const randomName = imageNames[Math.floor(Math.random() * imageNames.length)];
-            // 随机选择一个图片后缀
-            const randomExtension = imageExtensions[Math.floor(Math.random() * imageExtensions.length)];
-            
-            // 拼接完整图片路径
-            return `${imageFolder}/${randomName}${randomExtension}`;
+    <img id="randomImage" alt="Random Image">
+
+    <script>
+        // 获取/images目录下的所有图片文件
+        const imageFormats = ['.webp', '.jpg', '.png'];
+        const imagePath = 'images/';
+
+        // 获取目录下所有图片文件
+        const images = [
+            'image1.webp', 'image2.jpg', 'image3.png', 'image4.webp', 'image5.jpg'
+            // 你可以手动列出你 images 目录下的图片文件名
+        ];
+
+        // 随机选择一张图片
+        function getRandomImage() {
+            const randomIndex = Math.floor(Math.random() * images.length);
+            return images[randomIndex];
         }
 
-        // 设置图片
-        document.getElementById('randomImage').src = getRandomImage();
+        // 设置图片源
+        document.getElementById('randomImage').src = imagePath + getRandomImage();
     </script>
+
 </body>
 </html>
